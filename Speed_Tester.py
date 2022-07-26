@@ -58,9 +58,9 @@ def Download_Speed():
     try:
         Speed = speedtest.Speedtest()
         Down = Speed.download()
-        Res_Down = Down/800000
+        Res_Down = Down/8000000
         Rounded_Res_Down = round(Res_Down, 1)
-        fRounded_Res_Down = f"{Rounded_Res_Down} Mbps"
+        fRounded_Res_Down = f"{Rounded_Res_Down} MBps"
         Download_Speed_Str.set(fRounded_Res_Down)
     except:
         ErrorBox()
@@ -74,9 +74,9 @@ def Upload_Speed():
     try:
         Speed = speedtest.Speedtest()
         Up = Speed.upload()
-        Res_Up = Up/800000
+        Res_Up = Up/8000000
         Rounded_Res_Up = round(Res_Up, 1)
-        fRounded_Res_Up = f"{Rounded_Res_Up} Mbps"
+        fRounded_Res_Up = f"{Rounded_Res_Up} MBps"
         Upload_Speed_Str.set(fRounded_Res_Up)
     except:
         ErrorBox()
