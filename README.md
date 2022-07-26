@@ -41,6 +41,7 @@ pip 3 install -r /{path}/requirements.txt
 ### 	:satellite:    Usage: 
 
 Run the ```main.py``` to use the app. After that in opened window click on buttons to start testing your internet conenction speed.
+You can use _Speed Test_ button to test both of your download and upload speed. Also you can check only one of those by using _Download Speed_ or _Upload Speed_ button.
 
 
 
