@@ -3,6 +3,8 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 import speedtest
+from threading import Thread as td
+
 
 # ================================== Colors =======================================
 Frame_bgColor = "#090d20"
@@ -65,6 +67,9 @@ def Download_Speed():
         raise ConnectionError
 
 
+Th_DS = td(target=Download_Speed)
+
+
 def Upload_Speed():
     try:
         Speed = speedtest.Speedtest()
@@ -77,10 +82,14 @@ def Upload_Speed():
         ErrorBox()
         raise ConnectionError
 
+Th_US = td(target=Upload_Speed)
+
 
 def Speed_Test():
     Download_Speed()
     Upload_Speed()
+
+Th_ST = td(target=Speed_Test)
 
 
 def Clear():
@@ -106,17 +115,17 @@ def ErrorBox():
 # ================================== Buttons ======================================
 D_speed_test_Button = Button(
     top_5, text="Download Speed", width=13, bd=2, bg=Button_bgColor, fg=fgColor,
-    cursor="hand2", command=Download_Speed)
+    cursor="hand2", command=Th_DS.start)
 D_speed_test_Button.pack(side=LEFT, padx=(0, 20), pady=(40, 13))
 
 speed_test_Button = Button(top_5, text="Speed Test",
                            width=9, bd=2, bg=Button_bgColor, fg=fgColor,
-                           cursor="hand2", command=Speed_Test)
+                           cursor="hand2", command=Th_ST.start)
 speed_test_Button.pack(side=LEFT, padx=(0, 0), pady=(40, 13))
 
 U_speed_test_Button = Button(
     top_5, text="Upload Speed", width=13, bd=2, bg=Button_bgColor, fg=fgColor,
-    cursor="hand2", command=Upload_Speed)
+    cursor="hand2", command=Th_US.start)
 U_speed_test_Button.pack(side=LEFT, padx=(20, 0), pady=(40, 13))
 
 clear_Button = Button(top_6, text="Clear All", width=7,
